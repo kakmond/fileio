@@ -220,14 +220,14 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTaskChar = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.bcopy(in, out);
+					FileUtil.charcopy(in, out, 1);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
 			}
 
 			public String toString() {
-				return "Copy a file by using BufferedReader and BufferedWriter with an array of char. \n";
+				return "Copy a file by using BufferedReader and BufferedWriter with one char \n";
 			}
 		};
 
