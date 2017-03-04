@@ -79,20 +79,20 @@ public class FileCopyTask implements Runnable {
 		}
 		if (in != null)
 			return;
-		
+
 		// The ClassLoader knows the application's classpath
 		// and can open files that are on the classpath.
 		// The filename can have a relative directory to refer to
 		// subdirectories of the project source tree.
-		
+
 		ClassLoader loader = this.getClass().getClassLoader();
 		in = loader.getResourceAsStream(filename);
-		
+
 		// If loader.getResourceAsStream() cannot create an InputStream
 		// then it returns null. (No exception is thrown.)
 		// If 'in' is null then throw a RuntimeException
 		// so the caller will know that filename could not be opened.
-		
+
 		if (in == null) {
 			throw new RuntimeException("could not open input file " + filename);
 		}
@@ -147,7 +147,7 @@ public class FileCopyTask implements Runnable {
 		// Define a FileUtil task to copy a file byte by byte.
 		// This is an anonymous class that extends FileUtilTimer.
 		// as parameters to the superclass constructor?
-		FileCopyTask classTask1 = new FileCopyTask() {
+		FileCopyTask classTaskOneByte = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
 					FileUtil.copy(in, out);
@@ -155,12 +155,13 @@ public class FileCopyTask implements Runnable {
 					throw new RuntimeException();
 				}
 			}
+
 			public String toString() {
-				return "Copy a file byte-by-byte \n";
+				return "Copy a file byte-by-byte. \n";
 			}
 		};
 
-		FileCopyTask classTask2 = new FileCopyTask() {
+		FileCopyTask classTask1KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
 					FileUtil.copy(in, out, 1024);
@@ -168,12 +169,13 @@ public class FileCopyTask implements Runnable {
 					throw new RuntimeException();
 				}
 			}
+
 			public String toString() {
-				return "Copy a file using a byte array of size 1KB \n";
+				return "Copy a file using a byte array of size 1KB. \n";
 			}
 		};
 
-		FileCopyTask classTask3 = new FileCopyTask() {
+		FileCopyTask classTask4KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
 					FileUtil.copy(in, out, 4096);
@@ -181,12 +183,13 @@ public class FileCopyTask implements Runnable {
 					throw new RuntimeException();
 				}
 			}
+
 			public String toString() {
-				return "Copy a file using a byte array of size 4KB \n";
+				return "Copy a file using a byte array of size 4KB. \n";
 			}
 		};
 
-		FileCopyTask classTask4 = new FileCopyTask() {
+		FileCopyTask classTask64KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
 					FileUtil.copy(in, out, 65536);
@@ -194,12 +197,13 @@ public class FileCopyTask implements Runnable {
 					throw new RuntimeException();
 				}
 			}
+
 			public String toString() {
-				return "Copy a file using a byte array of size 64KB \n";
+				return "Copy a file using a byte array of size 64KB. \n";
 			}
 		};
 
-		FileCopyTask classTask5 = new FileCopyTask() {
+		FileCopyTask classTaskLine = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
 					FileUtil.bcopy(in, out);
@@ -207,18 +211,32 @@ public class FileCopyTask implements Runnable {
 					throw new RuntimeException();
 				}
 			}
+
 			public String toString() {
-				return "Copy a file by using BufferedReader and PrintWriter \n";
+				return "Copy a file by using BufferedReader and PrintWriter. \n";
 			}
 		};
 
-		FileCopyTask[] tasks = { classTask1, classTask2, classTask3, classTask4, classTask5 };
+		FileCopyTask classTaskChar = new FileCopyTask(inputFilename, outputFilename) {
+			public void run() {
+				try {
+					FileUtil.bcopy(in, out);
+				} catch (IOException e) {
+					throw new RuntimeException();
+				}
+			}
+
+			public String toString() {
+				return "Copy a file by using BufferedReader and BufferedWriter with an array of char. \n";
+			}
+		};
+
+		FileCopyTask[] tasks = { classTaskOneByte, classTask1KB, classTask4KB, classTask64KB, classTaskLine,
+				classTaskChar };
 
 		for (FileCopyTask task : tasks) {
-			task.setInput(inputFilename);
-			task.setOutput(outputFilename);
 			TaskTimer.measureAndPrint(task);
 		}
 	}
-	
+
 }

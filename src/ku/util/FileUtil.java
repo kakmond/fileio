@@ -1,12 +1,15 @@
 package ku.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.Writer;
 
 /**
  * This class for copy the InputStream to the OutputStream.
@@ -66,13 +69,10 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException();
 		} finally {
-			if (in != null) {
-				in.close();
-			}
-			if (out != null) {
-				out.close();
-			}
+			in.close();
+			out.close();
 		}
+
 	}
 
 	/**
@@ -90,10 +90,9 @@ public class FileUtil {
 	static void bcopy(InputStream in, OutputStream out) throws IOException {
 
 		BufferedReader bufferedReader = null;
-		Reader reader = null;
 		PrintWriter print = null;
 		try {
-			reader = new InputStreamReader(in);
+			Reader reader = new InputStreamReader(in);
 			bufferedReader = new BufferedReader(reader);
 			print = new PrintWriter(out);
 			String index;
@@ -104,12 +103,43 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException();
 		} finally {
-			if (in != null) {
-				in.close();
+			bufferedReader.close();
+			print.close();
+		}
+	}
+
+	/**
+	 * Read and write using BufferReader and BufferWriter with an array of char.
+	 * 
+	 * @param in
+	 *            is the Object of InputStream.
+	 * @param out
+	 *            is the Object of OutputStream.
+	 * @param blocksize
+	 *            the char array of size.
+	 * @throws RuntimeException
+	 *             if it cannot copy the InputStream to the OutputStream.
+	 */
+	static void charcopy(InputStream in, OutputStream out, int blocksize) throws IOException {
+
+		BufferedReader bufferedReader = null;
+		BufferedWriter bufferedWriter = null;
+		try {
+			Reader reader = new InputStreamReader(in);
+			Writer writer = new OutputStreamWriter(out);
+			bufferedReader = new BufferedReader(reader);
+			bufferedWriter = new BufferedWriter(writer);
+			char[] charecter = new char[blocksize];
+			int index;
+			while ((index = bufferedReader.read(charecter)) != -1) {
+				bufferedWriter.write(charecter, 0, index);
 			}
-			if (out != null) {
-				out.close();
-			}
+
+		} catch (IOException e) {
+			throw new RuntimeException();
+		} finally {
+			bufferedReader.close();
+			bufferedWriter.close();
 		}
 	}
 }
