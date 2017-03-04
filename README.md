@@ -12,7 +12,9 @@ Copy a file by using BufferedReader and BufferedWriter with one char at a time |
 
 Why Copy a file by using one byte at a time slower than using BufferedReader and BufferedWriter with one char at a time?
 >Because InputStream reads only one byte at a time but BufferedReader reads characters and buffers its input.
+
 Why Copy a file by using BufferedReader and BufferedWriter with one char at a time slower than using BufferedReader and PrintWriter to copy lines of text?
 >Because a BufferedWriter is an efficient way to write to a file, it will buffer the characters in memory before writing to the file.
+
 Why time of copy by using 1 byte > 1KB > 4KB > 64KB ?
 >Because it can read more data in each time.
