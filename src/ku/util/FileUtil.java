@@ -28,7 +28,6 @@ public class FileUtil {
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void copy(InputStream in, OutputStream out) throws IOException {
-
 		try {
 			int index;
 			while ((index = in.read()) != -1) {
@@ -52,7 +51,6 @@ public class FileUtil {
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void copy(InputStream in, OutputStream out, int blocksize) throws IOException {
-
 		try {
 			byte[] buffer = new byte[blocksize];
 			int index;
@@ -78,7 +76,6 @@ public class FileUtil {
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void bcopy(InputStream in, OutputStream out) throws IOException {
-
 		BufferedReader bufferedReader = null;
 		PrintWriter print = null;
 		try {
@@ -107,7 +104,6 @@ public class FileUtil {
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void charcopy(InputStream in, OutputStream out, int blocksize) throws IOException {
-
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
 		try {
