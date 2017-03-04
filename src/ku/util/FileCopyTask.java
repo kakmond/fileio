@@ -47,12 +47,9 @@ public class FileCopyTask implements Runnable {
 	 * Initialize a FileCopyTask with names of the input and output files to
 	 * use.
 	 * 
-	 * @param infile
-	 *            name of the file to use as input
-	 * @param outfile
-	 *            name of the file to use as output
-	 * @throws RuntimeException
-	 *             if either file cannot be opened
+	 * @param infile name of the file to use as input
+	 * @param outfile name of the file to use as output
+	 * @throws RuntimeException if either file cannot be opened
 	 */
 	public FileCopyTask(String infile, String outfile) {
 		setInput(infile);
@@ -62,11 +59,8 @@ public class FileCopyTask implements Runnable {
 	/**
 	 * Set the file to use as this object's 'in' attribute (InputStream).
 	 * 
-	 * @param filename
-	 *            is the name of a file to read as input
-	 * @throws RuntimeException
-	 *             if the filename cannot be opened for input, which usually
-	 *             means file not found.
+	 * @param filename is the name of a file to read as input
+	 * @throws RuntimeException if the filename cannot be opened for input, which usually means file not found.
 	 */
 	public void setInput(String filename) {
 		in = null;
@@ -101,11 +95,8 @@ public class FileCopyTask implements Runnable {
 	/**
 	 * Specify a filename to use as the OutputStream (out attribute).
 	 * 
-	 * @param filename
-	 *            is the name of the file to write to. If the file already
-	 *            exists it will be overwritten.
-	 * @throws RuntimeException
-	 *             if the filename cannot be opened as an OutputStream.
+	 * @param filename is the name of the file to write to. If the file already exists it will be overwritten.
+	 * @throws RuntimeException if the filename cannot be opened as an OutputStream.
 	 */
 	public void setOutput(String filename) {
 		try {
@@ -137,8 +128,7 @@ public class FileCopyTask implements Runnable {
 	 * class to create subclasses for each task. It uses Stopwatch and TaskTimer
 	 * to execute the task.
 	 * 
-	 * @param args
-	 *            not used.
+	 * @param args not used.
 	 */
 	public static void main(String[] args) {
 		final String inputFilename = "src/Big-Alice-in-Wonderland.txt";

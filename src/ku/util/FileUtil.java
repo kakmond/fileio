@@ -23,15 +23,11 @@ public class FileUtil {
 	 * Copy the InputStream to the OutputStream one byte at a time. Close the
 	 * InputStream and OutputStream when finished.
 	 * 
-	 * @param in
-	 *            is the Object of InputStream.
-	 * @param out
-	 *            is the Object of OutputStream.
-	 * @throws RuntimeException
-	 *             if it cannot copy the InputStream to the OutputStream.
+	 * @param in is the Object of InputStream.
+	 * @param out is the Object of OutputStream.
+	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void copy(InputStream in, OutputStream out) throws IOException {
-
 		try {
 			int index;
 			while ((index = in.read()) != -1) {
@@ -49,17 +45,12 @@ public class FileUtil {
 	 * Copy the InputStream to the OutputStream using a byte array of size
 	 * blocksize. Close the InputStream and OutputStream when finished.
 	 * 
-	 * @param in
-	 *            is the Object of InputStream.
-	 * @param out
-	 *            is the Object of OutputStream.
-	 * @param blocksize
-	 *            the the byte array of size.
-	 * @throws RuntimeException
-	 *             if it cannot copy the InputStream to the OutputStream.
+	 * @param in is the Object of InputStream.
+	 * @param out is the Object of OutputStream.
+	 * @param blocksize the the byte array of size.
+	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void copy(InputStream in, OutputStream out, int blocksize) throws IOException {
-
 		try {
 			byte[] buffer = new byte[blocksize];
 			int index;
@@ -80,15 +71,11 @@ public class FileUtil {
 	 * the InputStream and PrintWriter to write the OutputStream. Read and write
 	 * one line at a time.
 	 * 
-	 * @param in
-	 *            is the Object of InputStream.
-	 * @param out
-	 *            is the Object of OutputStream.
-	 * @throws RuntimeException
-	 *             if it cannot copy the InputStream to the OutputStream.
+	 * @param in is the Object of InputStream.
+	 * @param out is the Object of OutputStream.
+	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void bcopy(InputStream in, OutputStream out) throws IOException {
-
 		BufferedReader bufferedReader = null;
 		PrintWriter print = null;
 		try {
@@ -111,17 +98,12 @@ public class FileUtil {
 	/**
 	 * Read and write using BufferReader and BufferWriter with an array of char.
 	 * 
-	 * @param in
-	 *            is the Object of InputStream.
-	 * @param out
-	 *            is the Object of OutputStream.
-	 * @param blocksize
-	 *            the char array of size.
-	 * @throws RuntimeException
-	 *             if it cannot copy the InputStream to the OutputStream.
+	 * @param in is the Object of InputStream.
+	 * @param out is the Object of OutputStream.
+	 * @param blocksize the char array of size.
+	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
 	static void charcopy(InputStream in, OutputStream out, int blocksize) throws IOException {
-
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
 		try {
