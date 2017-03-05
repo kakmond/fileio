@@ -210,7 +210,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTaskChar = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.charcopy(in, out, 1);
+					FileUtil.charcopy(in, out, 1024);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
