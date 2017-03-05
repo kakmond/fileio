@@ -132,7 +132,10 @@ public class FileCopyTask implements Runnable {
 	public static void main(String[] args) {
 		final String inputFilename = "src/Big-Alice-in-Wonderland.txt";
 		final String outputFilename = "src/Big-Alice-in-Wonderland-Copy.txt";
-
+		final int size1KB = 1024;
+		final int size4KB = 1024 * 4;
+		final int size64KB = 1024 * 64;
+		final int charSize = 1024;
 		// Define a FileUtil task to copy a file byte by byte.
 		// This is an anonymous class that extends FileUtilTimer.
 		// as parameters to the superclass constructor?
@@ -153,7 +156,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTask1KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.copy(in, out, 1024);
+					FileUtil.copy(in, out, size1KB);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
@@ -167,7 +170,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTask4KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.copy(in, out, 4096);
+					FileUtil.copy(in, out, size4KB);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
@@ -181,7 +184,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTask64KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.copy(in, out, 65536);
+					FileUtil.copy(in, out, size64KB);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
@@ -209,7 +212,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTaskChar = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.charcopy(in, out, 1024);
+					FileUtil.charcopy(in, out, charSize);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
