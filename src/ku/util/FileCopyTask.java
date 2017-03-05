@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import stopwatch.TaskTimer;
 
 /**
@@ -210,14 +209,14 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask classTaskChar = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
 				try {
-					FileUtil.charcopy(in, out, 1);
+					FileUtil.charcopy(in, out, 1024);
 				} catch (IOException e) {
 					throw new RuntimeException();
 				}
 			}
 
 			public String toString() {
-				return "Copy a file by using BufferedReader and BufferedWriter with one char \n";
+				return "Copy a file by using BufferedReader and BufferedWriter with 1024 char \n";
 			}
 		};
 
