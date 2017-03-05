@@ -10,8 +10,8 @@ Copy a file using a byte array of size 64KB | 0.002045 sec
 Copy a file by using BufferedReader and PrintWriter to copy lines of text | 0.106274 sec
 Copy a file by using BufferedReader and BufferedWriter with 1024 char at a time | 0.059880 sec
 
-__Why Copy a file by using one byte take more time than using BufferedReader to copy lines of text ?__</br>
-Because BufferedReader reads characters and buffers its input.
+__Why Copy a file by using one byte slowest ?__</br>
+Because it can read one byte in each time.
 
 __Why Copy a file by using BufferedReader and BufferedWriter more efficient than using BufferedReader and PrintWriter to copy lines of text?__</br>
 Because a BufferedWriter is an efficient way to write to a file, it will buffer the characters in memory before writing to the file.
