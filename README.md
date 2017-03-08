@@ -16,5 +16,5 @@ Because it can read one byte in each time.
 __Why Copy a file by using BufferedReader and BufferedWriter more efficient than using BufferedReader and PrintWriter to copy lines of text?__</br>
 Because a BufferedWriter is an efficient way to write to a file, because it can write String, Character directly without change into Byte. 
 
-__Why time of copy by using 1 byte > 1KB > 4KB > 64KB ?__ </br>
+__Why time of copy by using 64KB < 4KB < 1KB < 1 byte?__ </br>
 Because it can read more data in each time.
