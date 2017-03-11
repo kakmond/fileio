@@ -27,7 +27,7 @@ public class FileUtil {
 	 * @param out is the Object of OutputStream.
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
-	static void copy(InputStream in, OutputStream out) throws IOException {
+	public static void copy(InputStream in, OutputStream out) throws IOException {
 
 		try {
 			int index;
@@ -51,7 +51,7 @@ public class FileUtil {
 	 * @param blocksize the the byte array of size.
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
-	static void copy(InputStream in, OutputStream out, int blocksize) throws IOException {
+	public static void copy(InputStream in, OutputStream out, int blocksize) throws IOException {
 
 		try {
 			byte[] buffer = new byte[blocksize];
@@ -77,7 +77,7 @@ public class FileUtil {
 	 * @param out is the Object of OutputStream.
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
-	static void bcopy(InputStream in, OutputStream out) throws IOException {
+	public static void bcopy(InputStream in, OutputStream out) throws IOException {
 
 		BufferedReader bufferedReader = null;
 		PrintWriter print = null;
@@ -106,7 +106,7 @@ public class FileUtil {
 	 * @param blocksize the char array of size.
 	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
 	 */
-	static void charcopy(InputStream in, OutputStream out, int blocksize) throws IOException {
+	public static void charcopy(InputStream in, OutputStream out, int blocksize) throws IOException {
 
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
