@@ -23,11 +23,14 @@ public class FileUtil {
 	 * Copy the InputStream to the OutputStream one byte at a time. Close the
 	 * InputStream and OutputStream when finished.
 	 * 
-	 * @param in is the Object of InputStream.
-	 * @param out is the Object of OutputStream.
-	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
+	 * @param in
+	 *            is the Object of InputStream.
+	 * @param out
+	 *            is the Object of OutputStream.
+	 * @throws RuntimeException
+	 *             if it cannot copy the InputStream to the OutputStream.
 	 */
-	public static void copy(InputStream in, OutputStream out) throws IOException {
+	public static void copy(InputStream in, OutputStream out) {
 
 		try {
 			int index;
@@ -37,8 +40,12 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException();
 		} finally {
-			in.close();
-			out.close();
+			try {
+				in.close();
+				out.close();
+			} catch (IOException e) {
+				throw new RuntimeException();
+			}
 		}
 	}
 
@@ -46,12 +53,16 @@ public class FileUtil {
 	 * Copy the InputStream to the OutputStream using a byte array of size
 	 * blocksize. Close the InputStream and OutputStream when finished.
 	 * 
-	 * @param in is the Object of InputStream.
-	 * @param out is the Object of OutputStream.
-	 * @param blocksize the the byte array of size.
-	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
+	 * @param in
+	 *            is the Object of InputStream.
+	 * @param out
+	 *            is the Object of OutputStream.
+	 * @param blocksize
+	 *            the the byte array of size.
+	 * @throws RuntimeException
+	 *             if it cannot copy the InputStream to the OutputStream.
 	 */
-	public static void copy(InputStream in, OutputStream out, int blocksize) throws IOException {
+	public static void copy(InputStream in, OutputStream out, int blocksize) {
 
 		try {
 			byte[] buffer = new byte[blocksize];
@@ -62,8 +73,12 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException();
 		} finally {
-			in.close();
-			out.close();
+			try {
+				in.close();
+				out.close();
+			} catch (IOException e) {
+				throw new RuntimeException();
+			}
 		}
 
 	}
@@ -73,11 +88,14 @@ public class FileUtil {
 	 * the InputStream and PrintWriter to write the OutputStream. Read and write
 	 * one line at a time.
 	 * 
-	 * @param in is the Object of InputStream.
-	 * @param out is the Object of OutputStream.
-	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
+	 * @param in
+	 *            is the Object of InputStream.
+	 * @param out
+	 *            is the Object of OutputStream.
+	 * @throws RuntimeException
+	 *             if it cannot copy the InputStream to the OutputStream.
 	 */
-	public static void bcopy(InputStream in, OutputStream out) throws IOException {
+	public static void bcopy(InputStream in, OutputStream out) {
 
 		BufferedReader bufferedReader = null;
 		PrintWriter print = null;
@@ -93,20 +111,29 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException();
 		} finally {
-			bufferedReader.close();
-			print.close();
+			try {
+				bufferedReader.close();
+				print.close();
+			} catch (IOException e) {
+				throw new RuntimeException();
+			}
+
 		}
 	}
 
 	/**
 	 * Read and write using BufferReader and BufferWriter with an array of char.
 	 * 
-	 * @param in is the Object of InputStream.
-	 * @param out is the Object of OutputStream.
-	 * @param blocksize the char array of size.
-	 * @throws RuntimeException if it cannot copy the InputStream to the OutputStream.
+	 * @param in
+	 *            is the Object of InputStream.
+	 * @param out
+	 *            is the Object of OutputStream.
+	 * @param blocksize
+	 *            the char array of size.
+	 * @throws RuntimeException
+	 *             if it cannot copy the InputStream to the OutputStream.
 	 */
-	public static void charcopy(InputStream in, OutputStream out, int blocksize) throws IOException {
+	public static void charcopy(InputStream in, OutputStream out, int blocksize) {
 
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
@@ -124,8 +151,12 @@ public class FileUtil {
 		} catch (IOException e) {
 			throw new RuntimeException();
 		} finally {
-			bufferedReader.close();
-			bufferedWriter.close();
+			try {
+				bufferedReader.close();
+				bufferedWriter.close();
+			} catch (IOException e) {
+				throw new RuntimeException();
+			}
 		}
 	}
 }
