@@ -3,7 +3,6 @@ package ku.util;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import stopwatch.TaskTimer;
@@ -46,9 +45,12 @@ public class FileCopyTask implements Runnable {
 	 * Initialize a FileCopyTask with names of the input and output files to
 	 * use.
 	 * 
-	 * @param infile name of the file to use as input
-	 * @param outfile name of the file to use as output
-	 * @throws RuntimeException if either file cannot be opened
+	 * @param infile
+	 *            name of the file to use as input
+	 * @param outfile
+	 *            name of the file to use as output
+	 * @throws RuntimeException
+	 *             if either file cannot be opened
 	 */
 	public FileCopyTask(String infile, String outfile) {
 		setInput(infile);
@@ -58,8 +60,11 @@ public class FileCopyTask implements Runnable {
 	/**
 	 * Set the file to use as this object's 'in' attribute (InputStream).
 	 * 
-	 * @param filename is the name of a file to read as input
-	 * @throws RuntimeException if the filename cannot be opened for input, which usually means file not found.
+	 * @param filename
+	 *            is the name of a file to read as input
+	 * @throws RuntimeException
+	 *             if the filename cannot be opened for input, which usually
+	 *             means file not found.
 	 */
 	public void setInput(String filename) {
 		in = null;
@@ -94,8 +99,11 @@ public class FileCopyTask implements Runnable {
 	/**
 	 * Specify a filename to use as the OutputStream (out attribute).
 	 * 
-	 * @param filename is the name of the file to write to. If the file already exists it will be overwritten.
-	 * @throws RuntimeException if the filename cannot be opened as an OutputStream.
+	 * @param filename
+	 *            is the name of the file to write to. If the file already
+	 *            exists it will be overwritten.
+	 * @throws RuntimeException
+	 *             if the filename cannot be opened as an OutputStream.
 	 */
 	public void setOutput(String filename) {
 		try {
@@ -127,7 +135,8 @@ public class FileCopyTask implements Runnable {
 	 * class to create subclasses for each task. It uses Stopwatch and TaskTimer
 	 * to execute the task.
 	 * 
-	 * @param args not used.
+	 * @param args
+	 *            not used.
 	 */
 	public static void main(String[] args) {
 		final String inputFilename = "src/Big-Alice-in-Wonderland.txt";
@@ -141,11 +150,7 @@ public class FileCopyTask implements Runnable {
 		// as parameters to the superclass constructor?
 		FileCopyTask classTaskOneByte = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
-				try {
-					FileUtil.copy(in, out);
-				} catch (IOException e) {
-					throw new RuntimeException();
-				}
+				FileUtil.copy(in, out);
 			}
 
 			public String toString() {
@@ -155,11 +160,7 @@ public class FileCopyTask implements Runnable {
 
 		FileCopyTask classTask1KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
-				try {
-					FileUtil.copy(in, out, size1KB);
-				} catch (IOException e) {
-					throw new RuntimeException();
-				}
+				FileUtil.copy(in, out, size1KB);
 			}
 
 			public String toString() {
@@ -169,11 +170,7 @@ public class FileCopyTask implements Runnable {
 
 		FileCopyTask classTask4KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
-				try {
-					FileUtil.copy(in, out, size4KB);
-				} catch (IOException e) {
-					throw new RuntimeException();
-				}
+				FileUtil.copy(in, out, size4KB);
 			}
 
 			public String toString() {
@@ -183,11 +180,7 @@ public class FileCopyTask implements Runnable {
 
 		FileCopyTask classTask64KB = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
-				try {
-					FileUtil.copy(in, out, size64KB);
-				} catch (IOException e) {
-					throw new RuntimeException();
-				}
+				FileUtil.copy(in, out, size64KB);
 			}
 
 			public String toString() {
@@ -197,11 +190,7 @@ public class FileCopyTask implements Runnable {
 
 		FileCopyTask classTaskLine = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
-				try {
-					FileUtil.bcopy(in, out);
-				} catch (IOException e) {
-					throw new RuntimeException();
-				}
+				FileUtil.bcopy(in, out);
 			}
 
 			public String toString() {
@@ -211,11 +200,7 @@ public class FileCopyTask implements Runnable {
 
 		FileCopyTask classTaskChar = new FileCopyTask(inputFilename, outputFilename) {
 			public void run() {
-				try {
-					FileUtil.charcopy(in, out, charSize);
-				} catch (IOException e) {
-					throw new RuntimeException();
-				}
+				FileUtil.charcopy(in, out, charSize);
 			}
 
 			public String toString() {
